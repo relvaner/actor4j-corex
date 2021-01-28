@@ -26,16 +26,33 @@ public class XActorSystemImpl extends DefaultActorSystemImpl {
 	protected /*quasi final*/ Supplier<XAntiFloodingTimer> factoryAntiFloodingTimer;
 	
 	public XActorSystemImpl(ActorSystem wrapper) {
-		this(null, wrapper);
+		this(null, wrapper, false);
+	}
+	
+	public XActorSystemImpl(ActorSystem wrapper, boolean unbounded) {
+		this(null, wrapper, unbounded);
+	}
+	
+	public XActorSystemImpl(String name, ActorSystem wrapper) {
+		this(name, wrapper, false);
 	}
 
-	public XActorSystemImpl(String name, ActorSystem wrapper) {
+	public XActorSystemImpl(String name, ActorSystem wrapper, boolean unbounded) {
 		super(name, wrapper);
 		
 		antiFloodingEnabled = new AtomicBoolean(false);
 		
 		messageDispatcher = new XActorMessageDispatcher(this);
 		actorThreadClass = XActorThread.class;
+		
+		setActorThreadClass(unbounded); // override default
+	}
+	
+	public void setActorThreadClass(boolean unbounded) {
+		if (unbounded)
+			actorThreadClass  = XUnboundedActorThread.class;
+		else
+			actorThreadClass  = XBoundedActorThread.class;
 	}
 	
 	public void setFactoryAntiFloodingTimer(Supplier<XAntiFloodingTimer> factoryAntiFloodingTimer) {
