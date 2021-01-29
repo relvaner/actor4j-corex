@@ -108,7 +108,7 @@ public abstract class ConcurrentPseudoActorWithRx {
 		return poll(getOuterQueue());
 	}
 	
-	public Stream<ActorMessage<?>> runWithStream() {
+	public Stream<ActorMessage<?>> stream() {
 		return getOuterQueue().stream();
 	}
 	

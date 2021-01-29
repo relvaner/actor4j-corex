@@ -48,8 +48,8 @@ public abstract class PseudoActorWithRx extends PseudoActor {
 		return ((PseudoActorCell)cell).runOnce();
 	}
 	
-	public  Stream<ActorMessage<?>> runWithStream() {
-		return ((PseudoActorCell)cell).runWithStream();
+	public  Stream<ActorMessage<?>> stream() {
+		return ((PseudoActorCell)cell).stream();
 	}
 	
 	public Flowable<ActorMessage<?>> runWithRx() {
