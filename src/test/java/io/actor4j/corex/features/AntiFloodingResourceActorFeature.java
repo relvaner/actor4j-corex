@@ -24,6 +24,6 @@ import io.actor4j.corex.AntiFloodingActorSystemImpl;
 public class AntiFloodingResourceActorFeature extends ResourceActorFeature {
 	@Before
 	public void before() {
-		system = new ActorSystem("af-actor4j", AntiFloodingActorSystemImpl.class);
+		system = new ActorSystem("actor4j-antiflooding", (name, wrapper) -> new AntiFloodingActorSystemImpl(name, wrapper));
 	}
 }

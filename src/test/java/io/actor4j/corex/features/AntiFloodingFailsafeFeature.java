@@ -24,7 +24,7 @@ import io.actor4j.corex.AntiFloodingActorSystemImpl;
 public class AntiFloodingFailsafeFeature extends FailsafeFeature {
 	@Before
 	public void before() {
-		system = new ActorSystem("af-actor4j", AntiFloodingActorSystemImpl.class);
+		system = new ActorSystem("actor4j-antiflooding", (name, wrapper) -> new AntiFloodingActorSystemImpl(name, wrapper));
 		system.setParallelismMin(1);
 	}
 }

@@ -24,7 +24,7 @@ import io.actor4j.core.features.AwaitFeature;
 public class AntiFloodingAwaitFeature extends AwaitFeature {
 	@Before
 	public void before() {
-		system = new ActorSystem("af-actor4j", AntiFloodingActorSystemImpl.class);
+		system = new ActorSystem("actor4j-antiflooding", (name, wrapper) -> new AntiFloodingActorSystemImpl(name, wrapper));
 		system.setParallelismMin(1);
 	}
 }
