@@ -35,7 +35,7 @@ public class AntiFloodingActorSystemImpl extends DefaultActorSystemImpl {
 		peakLoadHandlingEnabled = new AtomicBoolean(true);
 		
 		messageDispatcher = new AntiFloodingActorMessageDispatcher(this);
-		actorThreadClass = AntiFloodingActorThread.class;
+		actorThreadFactory = (group, n, system) -> new AntiFloodingActorThread(group, n, system);
 	}
 	
 	public void setFactoryAntiFloodingTimer(Supplier<AntiFloodingTimer> factoryAntiFloodingTimer) {
