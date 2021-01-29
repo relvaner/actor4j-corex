@@ -29,16 +29,16 @@ import io.actor4j.core.ActorThread;
 import io.actor4j.core.PseudoActorCell;
 import io.actor4j.core.messages.ActorMessage;
 
-public class XActorMessageDispatcher extends ActorMessageDispatcher {
+public class AntiFloodingActorMessageDispatcher extends ActorMessageDispatcher {
 	protected final Consumer<ActorMessage<?>> consumerPseudo;
 	
-	public XActorMessageDispatcher(ActorSystemImpl system) {
+	public AntiFloodingActorMessageDispatcher(ActorSystemImpl system) {
 		super(system);
 		
 		consumerPseudo = new Consumer<ActorMessage<?>>() {
 			@Override
 			public void accept(ActorMessage<?> msg) {
-				ActorCell cell = XActorMessageDispatcher.this.system.getPseudoCells().get(msg.dest);
+				ActorCell cell = AntiFloodingActorMessageDispatcher.this.system.getPseudoCells().get(msg.dest);
 				if (cell!=null)
 					((PseudoActorCell)cell).getOuterQueue().offer(msg);
 			}

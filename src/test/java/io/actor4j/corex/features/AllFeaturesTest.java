@@ -20,6 +20,19 @@ import org.junit.runner.RunWith;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	AntiFloodingActorFeature.class,
+	AntiFloodingAwaitFeature.class,
+	AntiFloodingFailsafeFeature.class,
+	
+	AntiFloodingPseudoActorFeature.class,
+	AntiFloodingStatelessActorFeature.class,
+	AntiFloodingPrimarySecondaryActorFeature.class,
+	AntiFloodingResourceActorFeature.class,
+	
+	AntiFloodingActorGroupMemberFeature.class,
+	
+	/**********************************************/
+	
 	XActorFeature.class,
 	XAwaitFeature.class,
 	XFailsafeFeature.class,

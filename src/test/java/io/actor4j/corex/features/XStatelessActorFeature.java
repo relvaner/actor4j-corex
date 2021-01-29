@@ -17,13 +17,12 @@ package io.actor4j.corex.features;
 
 import org.junit.Before;
 
-import io.actor4j.core.ActorSystem;
 import io.actor4j.core.features.StatelessActorFeature;
-import io.actor4j.corex.XActorSystemImpl;
+import io.actor4j.corex.XActorSystem;
 
 public class XStatelessActorFeature extends StatelessActorFeature {
 	@Before
 	public void before() {
-		system = new ActorSystem("x-actor4j", XActorSystemImpl.class);
+		system = new XActorSystem();
 	}
 }

@@ -33,7 +33,7 @@ import io.actor4j.core.ActorThread;
 import io.actor4j.core.ActorThreadMode;
 import io.actor4j.core.messages.ActorMessage;
 
-public class XActorThread extends ActorThread {
+public class AntiFloodingActorThread extends ActorThread {
 	protected final Queue<ActorMessage<?>> directiveQueue;
 	protected final Queue<ActorMessage<?>> priorityQueue;
 	protected final Queue<ActorMessage<?>> innerQueueL2;
@@ -44,12 +44,12 @@ public class XActorThread extends ActorThread {
 	protected final Queue<ActorMessage<?>> serverQueueL2;
 	protected final Queue<ActorMessage<?>> serverQueueL1;
 	
-	protected final XAntiFloodingTimer innerQueueAntiFloodingTimer;
-	protected final XAntiFloodingTimer outerQueueAntiFloodingTimer;
+	protected final AntiFloodingTimer innerQueueAntiFloodingTimer;
+	protected final AntiFloodingTimer outerQueueAntiFloodingTimer;
 	
 	protected final AtomicBoolean newMessage;
 	
-	public XActorThread(ThreadGroup group, String name, ActorSystemImpl system) {
+	public AntiFloodingActorThread(ThreadGroup group, String name, ActorSystemImpl system) {
 		super(group, name, system);
 		
 		directiveQueue = new MpscLinkedQueue<>(); /* unbounded */
@@ -65,8 +65,8 @@ public class XActorThread extends ActorThread {
 		innerQueueL2   = new LinkedList<>(); /* unbounded */
 		innerQueueL1   = new CircularFifoQueue<>(system.getQueueSize()); /* bounded */
 		
-		innerQueueAntiFloodingTimer = ((XActorSystemImpl)system).factoryAntiFloodingTimer.get();
-		outerQueueAntiFloodingTimer = ((XActorSystemImpl)system).factoryAntiFloodingTimer.get();
+		innerQueueAntiFloodingTimer = ((AntiFloodingActorSystemImpl)system).factoryAntiFloodingTimer.get();
+		outerQueueAntiFloodingTimer = ((AntiFloodingActorSystemImpl)system).factoryAntiFloodingTimer.get();
 		
 		newMessage = new AtomicBoolean(true);
 	}
@@ -88,7 +88,7 @@ public class XActorThread extends ActorThread {
 	
 	@Override
 	public void outerQueue(ActorMessage<?> message) {
-		if (!((XActorSystemImpl)system).antiFloodingEnabled.get()) {
+		if (((AntiFloodingActorSystemImpl)system).peakLoadHandlingEnabled.get()) {
 			if (outerQueueL2A.size()>=system.getQueueSize() || !outerQueueL2B.isEmpty()) {
 				if (isDirective(message) || outerQueueAntiFloodingTimer.isInTimeRange())
 					outerQueueL2B.offer(message);
@@ -104,7 +104,7 @@ public class XActorThread extends ActorThread {
 	
 	@Override
 	public void innerQueue(ActorMessage<?> message) {
-		if (!((XActorSystemImpl)system).antiFloodingEnabled.get()) {
+		if (((AntiFloodingActorSystemImpl)system).peakLoadHandlingEnabled.get()) {
 			if ((((CircularFifoQueue<ActorMessage<?>>)innerQueueL1).isAtFullCapacity() || !innerQueueL2.isEmpty())) {
 				if (isDirective(message) || innerQueueAntiFloodingTimer.isInTimeRange())
 					innerQueueL2.offer(message);

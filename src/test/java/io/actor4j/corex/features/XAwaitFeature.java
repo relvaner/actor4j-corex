@@ -17,14 +17,13 @@ package io.actor4j.corex.features;
 
 import org.junit.Before;
 
-import io.actor4j.core.ActorSystem;
-import io.actor4j.corex.XActorSystemImpl;
+import io.actor4j.corex.XActorSystem;
 import io.actor4j.core.features.AwaitFeature;
 
 public class XAwaitFeature extends AwaitFeature {
 	@Before
 	public void before() {
-		system = new ActorSystem("x-actor4j", XActorSystemImpl.class);
+		system = new XActorSystem();
 		system.setParallelismMin(1);
 	}
 }

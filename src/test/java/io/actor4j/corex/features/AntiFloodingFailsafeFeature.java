@@ -17,12 +17,14 @@ package io.actor4j.corex.features;
 
 import org.junit.Before;
 
-import io.actor4j.core.features.ActorGroupMemberFeature;
-import io.actor4j.corex.XActorSystem;
+import io.actor4j.core.ActorSystem;
+import io.actor4j.core.features.FailsafeFeature;
+import io.actor4j.corex.AntiFloodingActorSystemImpl;
 
-public class XActorGroupMemberFeature extends ActorGroupMemberFeature {
+public class AntiFloodingFailsafeFeature extends FailsafeFeature {
 	@Before
 	public void before() {
-		system = new XActorSystem();
+		system = new ActorSystem("af-actor4j", AntiFloodingActorSystemImpl.class);
+		system.setParallelismMin(1);
 	}
 }

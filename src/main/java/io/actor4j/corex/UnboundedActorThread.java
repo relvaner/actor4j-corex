@@ -16,17 +16,16 @@
 package io.actor4j.corex;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.concurrent.PriorityBlockingQueue;
 
-import org.apache.commons.collections4.queue.CircularFifoQueue;
-import org.jctools.queues.MpscArrayQueue;
 import org.jctools.queues.MpscLinkedQueue;
 
 import io.actor4j.core.ActorSystemImpl;
 import io.actor4j.core.DefaultActorThread;
 
-public class XBoundedActorThread extends DefaultActorThread {
-	public XBoundedActorThread(ThreadGroup group, String name, ActorSystemImpl system) {
+public class UnboundedActorThread extends DefaultActorThread {
+	public UnboundedActorThread(ThreadGroup group, String name, ActorSystemImpl system) {
 		super(group, name, system);
 	}
 
@@ -35,12 +34,12 @@ public class XBoundedActorThread extends DefaultActorThread {
 		directiveQueue = new MpscLinkedQueue<>(); /* unbounded */
 		priorityQueue  = new PriorityBlockingQueue<>(system.getQueueSize()); /* unbounded */
 		
-		serverQueueL2  = new MpscArrayQueue<>(system.getQueueSize()); /* bounded */
+		serverQueueL2  = new MpscLinkedQueue<>(); /* unbounded */
 		serverQueueL1  = new ArrayDeque<>(system.getBufferQueueSize()); /* unbounded */
 		
-		outerQueueL2   = new MpscArrayQueue<>(system.getQueueSize()); /* bounded */
+		outerQueueL2   = new MpscLinkedQueue<>(); /* unbounded */
 		outerQueueL1   = new ArrayDeque<>(system.getBufferQueueSize()); /* unbounded */
 		
-		innerQueue     = new CircularFifoQueue<>(system.getQueueSize()); /* bounded */
+		innerQueue     = new LinkedList<>(); /* unbounded */
 	}
 }

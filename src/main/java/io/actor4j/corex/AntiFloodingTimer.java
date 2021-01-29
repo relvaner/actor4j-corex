@@ -15,7 +15,7 @@
  */
 package io.actor4j.corex;
 
-public class XAntiFloodingTimer {
+public class AntiFloodingTimer {
 	protected int count;
 	protected int maxCount;
 	protected long withinTimeRange;
@@ -25,7 +25,7 @@ public class XAntiFloodingTimer {
 	
 	protected boolean active;
 	
-	public XAntiFloodingTimer(int maxCount, long withinTimeRange) {
+	public AntiFloodingTimer(int maxCount, long withinTimeRange) {
 		this.maxCount = maxCount;
 		this.withinTimeRange = withinTimeRange;
 	}
