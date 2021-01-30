@@ -27,6 +27,10 @@ public class XActorSystem extends ActorSystem {
 		this("actor4j-x", true);
 	}
 	
+	public XActorSystem(String name) {
+		this(name, true);
+	}
+
 	public XActorSystem(boolean unbounded) {
 		this("actor4j-x", unbounded);
 	}
