@@ -1,7 +1,0 @@
-	public UUID addChild(Class<? extends Actor> clazz, Object... args) {
-		return cell.addChild(clazz, args);
-	}
-	
-	public List<UUID> addChild(int instances, Class<? extends Actor> clazz, Object... args) {
-		return cell.addChild(instances, clazz, args);
-	}
