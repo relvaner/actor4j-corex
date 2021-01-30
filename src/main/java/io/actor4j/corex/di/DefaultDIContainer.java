@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import io.actor4j.core.di.DIContainer;
 import io.actor4j.core.di.FactoryInjector;
-import io.actor4j.core.utils.Utils;
+import io.actor4j.corex.utils.Utils;
 
 public class DefaultDIContainer<K> implements DIContainer<K> {
 	protected Map<K, DIMapEntry> diMap;
