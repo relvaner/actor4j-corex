@@ -15,6 +15,8 @@
  */
 package io.actor4j.corex.di;
 
+import io.actor4j.core.di.FactoryInjector;
+
 public class DIMapEntry {
 	protected Class<?> base;
 	protected ConstructorInjector constructorInjector;

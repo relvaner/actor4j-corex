@@ -24,11 +24,11 @@ import io.actor4j.core.exceptions.ActorInitializationException;
 
 public class XActorSystem extends ActorSystem {
 	public XActorSystem() {
-		this("x-actor4j", true);
+		this("actor4j-x", true);
 	}
 	
 	public XActorSystem(boolean unbounded) {
-		this("x-actor4j", unbounded);
+		this("actor4j-x", unbounded);
 	}
 
 	public XActorSystem(String name, boolean unbounded) {

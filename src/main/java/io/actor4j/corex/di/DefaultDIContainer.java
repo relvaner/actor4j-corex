@@ -19,12 +19,14 @@ import java.lang.reflect.Constructor;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import io.actor4j.core.di.DIContainer;
+import io.actor4j.core.di.FactoryInjector;
 import io.actor4j.core.utils.Utils;
 
-public class DIContainer<K> {
+public class DefaultDIContainer<K> implements DIContainer<K> {
 	protected Map<K, DIMapEntry> diMap;
 	
-	public DIContainer() {
+	public DefaultDIContainer() {
 		diMap = new ConcurrentHashMap<>();
 	}
 
@@ -45,6 +47,11 @@ public class DIContainer<K> {
 		entry.setFactoryInjector(factoryInjector);
 		
 		diMap.put(key, entry);
+	}
+	
+	@Override
+	public void register(K key, FactoryInjector<?> factoryInjector) {
+		registerFactoryInjector(key, factoryInjector);
 	}
 	
 	protected Object buildInstance(Class<?> base, Object[] params) throws Exception {
@@ -110,11 +117,12 @@ public class DIContainer<K> {
 		return result;
 	}
 	
-	public DIMapEntry unregister(K key) {
-		return diMap.remove(key);
+	@Override
+	public void unregister(K key) {
+		diMap.remove(key);
 	}
 	
 	public static <K> DIContainer<K> create() {
-		return new DIContainer<>();
+		return new DefaultDIContainer<>();
 	}
 }

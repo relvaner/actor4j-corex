@@ -24,8 +24,10 @@ import java.util.UUID;
 import io.actor4j.core.ActorCell;
 import io.actor4j.core.ActorSystem;
 import io.actor4j.core.ActorSystemImpl;
+import io.actor4j.core.DefaultActorMessageDispatcher;
 import io.actor4j.core.actors.Actor;
 import io.actor4j.core.exceptions.ActorInitializationException;
+import io.actor4j.corex.di.DefaultDIContainer;
 
 public class XActorSystemImpl extends ActorSystemImpl {
 	public XActorSystemImpl(ActorSystem wrapper) {
@@ -35,6 +37,9 @@ public class XActorSystemImpl extends ActorSystemImpl {
 	public XActorSystemImpl(String name, boolean unbounded, ActorSystem wrapper) {
 		super(name, wrapper);
 		
+		container = DefaultDIContainer.create();
+		
+		messageDispatcher = new DefaultActorMessageDispatcher(this);
 		setActorThread(unbounded);
 	}
 	
@@ -56,7 +61,7 @@ public class XActorSystemImpl extends ActorSystemImpl {
 	
 	public UUID addActor(Class<? extends Actor> clazz, Object... args) throws ActorInitializationException {
 		ActorCell cell = generateCell(clazz);
-		container.registerConstructorInjector(cell.getId(), clazz, args);
+		((DefaultDIContainer<UUID>)container).registerConstructorInjector(cell.getId(), clazz, args);
 		Actor actor = null;
 		try {
 			actor = (Actor)container.getInstance(cell.getId());
