@@ -16,6 +16,12 @@
 package io.actor4j.corex.features;
 
 import org.junit.runners.Suite;
+
+import static io.actor4j.core.logging.ActorLogger.ERROR;
+import static io.actor4j.core.logging.ActorLogger.logger;
+import static io.actor4j.core.logging.ActorLogger.systemLogger;
+
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Suite.class)
@@ -45,5 +51,9 @@ import org.junit.runner.RunWith;
 	XActorGroupMemberFeature.class,
 })
 public class AllFeaturesTest {
-
+	@BeforeClass
+	public static void beforeClass() {
+		systemLogger().setLevel(ERROR); // default actor4j-core system logger
+		logger().setLevel(ERROR); // default actor4j-core user logger
+	}
 }

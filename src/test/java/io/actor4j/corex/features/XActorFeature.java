@@ -15,7 +15,7 @@
  */
 package io.actor4j.corex.features;
 
-import static io.actor4j.core.logging.user.ActorLogger.logger;
+import static io.actor4j.corex.logging.ActorLogger.logger;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;

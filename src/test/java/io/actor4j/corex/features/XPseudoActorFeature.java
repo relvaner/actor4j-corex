@@ -32,7 +32,7 @@ import io.actor4j.core.utils.ActorFactory;
 import io.actor4j.corex.XActorSystem;
 import io.actor4j.corex.actors.PseudoActorWithRx;
 
-import static io.actor4j.core.logging.user.ActorLogger.logger;
+import static io.actor4j.corex.logging.ActorLogger.logger;
 import static org.junit.Assert.*;
 
 public class XPseudoActorFeature {

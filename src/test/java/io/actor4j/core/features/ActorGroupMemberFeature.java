@@ -34,7 +34,7 @@ import io.actor4j.core.messages.ActorMessage;
 import io.actor4j.core.utils.ActorGroup;
 import io.actor4j.core.utils.ActorGroupSet;
 
-import static io.actor4j.core.logging.user.ActorLogger.logger;
+import static io.actor4j.corex.logging.ActorLogger.logger;
 import static org.junit.Assert.*;
 
 public class ActorGroupMemberFeature {

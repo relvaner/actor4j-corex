@@ -15,7 +15,7 @@
  */
 package io.actor4j.core.features;
 
-import static io.actor4j.core.logging.user.ActorLogger.logger;
+import static io.actor4j.corex.logging.ActorLogger.logger;
 
 import java.util.Timer;
 import java.util.TimerTask;
