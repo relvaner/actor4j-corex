@@ -49,6 +49,8 @@ import org.junit.runner.RunWith;
 	XResourceActorFeature.class,
 	
 	XActorGroupMemberFeature.class,
+	
+	XPodFeature.class
 })
 public class AllFeaturesTest {
 	@BeforeClass

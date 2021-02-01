@@ -28,6 +28,7 @@ import io.actor4j.core.DefaultActorMessageDispatcher;
 import io.actor4j.core.actors.Actor;
 import io.actor4j.core.exceptions.ActorInitializationException;
 import io.actor4j.corex.di.DefaultDIContainer;
+import io.actor4j.corex.pods.XPodReplicationController;
 
 public class XActorSystemImpl extends ActorSystemImpl {
 	public XActorSystemImpl(ActorSystem wrapper) {
@@ -37,7 +38,8 @@ public class XActorSystemImpl extends ActorSystemImpl {
 	public XActorSystemImpl(String name, boolean unbounded, ActorSystem wrapper) {
 		super(name, wrapper);
 		
-		container = DefaultDIContainer.create();
+		container = DefaultDIContainer.create(); // override
+		podReplicationController = new XPodReplicationController(this); // override
 		
 		messageDispatcher = new DefaultActorMessageDispatcher(this);
 		setActorThread(unbounded);
