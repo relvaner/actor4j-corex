@@ -18,25 +18,26 @@ package io.actor4j.corex;
 import java.util.List;
 import java.util.UUID;
 
-import io.actor4j.core.ActorSystem;
+import io.actor4j.core.ActorService;
 import io.actor4j.core.actors.Actor;
 import io.actor4j.core.exceptions.ActorInitializationException;
 
-public class XActorSystem extends ActorSystem {
-	public XActorSystem() {
+public class XActorService extends ActorService {
+	public XActorService() {
 		this(null, true);
 	}
 	
-	public XActorSystem(String name) {
+	public XActorService(String name) {
 		this(name, true);
 	}
 
-	public XActorSystem(boolean unbounded) {
+	public XActorService(boolean unbounded) {
 		this(null, unbounded);
 	}
 
-	public XActorSystem(String name, boolean unbounded) {
+	public XActorService(String name, boolean unbounded) {
 		super(name, (n, wrapper) -> new XActorSystemImpl(n, unbounded, wrapper));
+		serverMode();
 	}
 	
 	public List<UUID> addActor(int instances, Class<? extends Actor> clazz, Object... args) throws ActorInitializationException {
