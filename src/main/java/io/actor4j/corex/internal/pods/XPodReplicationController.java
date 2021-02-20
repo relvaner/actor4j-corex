@@ -1,11 +1,11 @@
-package io.actor4j.corex.pods;
+package io.actor4j.corex.internal.pods;
 
 import java.io.File;
 
-import io.actor4j.core.ActorSystemImpl;
+import io.actor4j.core.internal.ActorSystemImpl;
+import io.actor4j.core.internal.pods.PodReplicationController;
+import io.actor4j.core.internal.pods.PodSystemConfiguration;
 import io.actor4j.core.pods.PodConfiguration;
-import io.actor4j.core.pods.PodReplicationController;
-import io.actor4j.core.pods.PodSystemConfiguration;
 
 public class XPodReplicationController extends PodReplicationController {
 	public XPodReplicationController(ActorSystemImpl system) {

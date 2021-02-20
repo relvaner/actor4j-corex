@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.actor4j.corex.di;
+package io.actor4j.corex.internal.di;
 
-import io.actor4j.core.di.FactoryInjector;
+import io.actor4j.core.internal.di.FactoryInjector;
 
 public class DIMapEntry {
 	protected Class<?> base;

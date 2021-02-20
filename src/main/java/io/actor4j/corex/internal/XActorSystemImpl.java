@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.actor4j.corex;
+package io.actor4j.corex.internal;
 
 import static io.actor4j.core.utils.ActorUtils.UUID_ZERO;
 
@@ -21,14 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import io.actor4j.core.ActorCell;
 import io.actor4j.core.ActorSystem;
-import io.actor4j.core.ActorSystemImpl;
-import io.actor4j.core.DefaultActorMessageDispatcher;
 import io.actor4j.core.actors.Actor;
 import io.actor4j.core.exceptions.ActorInitializationException;
-import io.actor4j.corex.di.DefaultDIContainer;
-import io.actor4j.corex.pods.XPodReplicationController;
+import io.actor4j.core.internal.ActorCell;
+import io.actor4j.core.internal.ActorSystemImpl;
+import io.actor4j.core.internal.DefaultActorMessageDispatcher;
+import io.actor4j.corex.internal.di.DefaultDIContainer;
+import io.actor4j.corex.internal.pods.XPodReplicationController;
 
 public class XActorSystemImpl extends ActorSystemImpl {
 	public XActorSystemImpl(ActorSystem wrapper) {

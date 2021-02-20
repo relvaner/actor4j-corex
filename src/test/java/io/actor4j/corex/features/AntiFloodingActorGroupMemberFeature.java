@@ -19,7 +19,7 @@ import org.junit.Before;
 
 import io.actor4j.core.ActorSystem;
 import io.actor4j.core.features.ActorGroupMemberFeature;
-import io.actor4j.corex.AntiFloodingActorSystemImpl;
+import io.actor4j.corex.internal.AntiFloodingActorSystemImpl;
 
 public class AntiFloodingActorGroupMemberFeature extends ActorGroupMemberFeature {
 	@Before

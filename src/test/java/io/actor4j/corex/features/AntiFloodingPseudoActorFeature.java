@@ -29,8 +29,8 @@ import io.actor4j.core.ActorSystem;
 import io.actor4j.core.actors.Actor;
 import io.actor4j.core.messages.ActorMessage;
 import io.actor4j.core.utils.ActorFactory;
-import io.actor4j.corex.AntiFloodingActorSystemImpl;
 import io.actor4j.corex.actors.PseudoActorWithRx;
+import io.actor4j.corex.internal.AntiFloodingActorSystemImpl;
 
 import static io.actor4j.corex.logging.ActorLogger.logger;
 import static org.junit.Assert.*;

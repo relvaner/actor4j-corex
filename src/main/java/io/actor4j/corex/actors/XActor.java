@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import io.actor4j.core.ActorCell;
 import io.actor4j.core.actors.Actor;
 import io.actor4j.core.exceptions.ActorInitializationException;
-import io.actor4j.corex.di.DefaultDIContainer;
+import io.actor4j.core.internal.ActorCell;
+import io.actor4j.corex.internal.di.DefaultDIContainer;
 
 public abstract class XActor extends Actor {
 	public XActor() {

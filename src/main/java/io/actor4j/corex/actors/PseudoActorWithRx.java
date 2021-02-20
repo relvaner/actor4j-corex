@@ -22,8 +22,8 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import io.actor4j.core.ActorSystem;
-import io.actor4j.core.PseudoActorCell;
 import io.actor4j.core.actors.PseudoActor;
+import io.actor4j.core.internal.PseudoActorCell;
 import io.actor4j.core.messages.ActorMessage;
 import io.actor4j.corex.utils.ActorMessageFlowable;
 import io.reactivex.Flowable;

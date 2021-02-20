@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.actor4j.corex.pods;
+package io.actor4j.corex.internal.pods;
 
 import static io.actor4j.core.logging.ActorLogger.*;
 
@@ -26,9 +26,9 @@ import java.net.URLClassLoader;
 import java.util.List;
 
 import io.actor4j.core.ActorPodService;
+import io.actor4j.core.internal.pods.PodSystemConfiguration;
 import io.actor4j.core.pods.PodConfiguration;
 import io.actor4j.core.pods.PodContext;
-import io.actor4j.core.pods.PodSystemConfiguration;
 
 public class XPodDeployment {
 	public static void deployPods(File jarFile, PodConfiguration podConfiguration, PodSystemConfiguration podSystemConfiguration, ActorPodService service) {

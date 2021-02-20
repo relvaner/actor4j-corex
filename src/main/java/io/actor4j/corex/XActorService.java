@@ -21,6 +21,7 @@ import java.util.UUID;
 import io.actor4j.core.ActorService;
 import io.actor4j.core.actors.Actor;
 import io.actor4j.core.exceptions.ActorInitializationException;
+import io.actor4j.corex.internal.XActorSystemImpl;
 
 public class XActorService extends ActorService {
 	public XActorService() {

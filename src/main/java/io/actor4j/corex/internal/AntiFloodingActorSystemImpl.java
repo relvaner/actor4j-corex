@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.actor4j.corex;
+package io.actor4j.corex.internal;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
 
 import io.actor4j.core.ActorSystem;
-import io.actor4j.core.DefaultActorSystemImpl;
+import io.actor4j.core.internal.DefaultActorSystemImpl;
 
 public class AntiFloodingActorSystemImpl extends DefaultActorSystemImpl {
 	protected final AtomicBoolean peakLoadHandlingEnabled;

@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.actor4j.corex.di;
+package io.actor4j.corex.internal.di;
 
 import java.lang.reflect.Constructor;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import io.actor4j.core.di.DIContainer;
-import io.actor4j.core.di.FactoryInjector;
+import io.actor4j.core.internal.di.DIContainer;
+import io.actor4j.core.internal.di.FactoryInjector;
 import io.actor4j.corex.utils.Utils;
 
 public class DefaultDIContainer<K> implements DIContainer<K> {

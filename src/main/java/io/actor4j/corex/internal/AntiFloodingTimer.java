@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.actor4j.corex;
+package io.actor4j.corex.internal;
 
 public class AntiFloodingTimer {
 	protected int count;

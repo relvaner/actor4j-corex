@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.actor4j.corex;
+package io.actor4j.corex.internal;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,12 +21,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-import io.actor4j.core.ActorCell;
-import io.actor4j.core.ActorMessageDispatcher;
 import io.actor4j.core.ActorServiceNode;
-import io.actor4j.core.ActorSystemImpl;
-import io.actor4j.core.ActorThread;
-import io.actor4j.core.PseudoActorCell;
+import io.actor4j.core.internal.ActorCell;
+import io.actor4j.core.internal.ActorMessageDispatcher;
+import io.actor4j.core.internal.ActorSystemImpl;
+import io.actor4j.core.internal.ActorThread;
+import io.actor4j.core.internal.PseudoActorCell;
 import io.actor4j.core.messages.ActorMessage;
 
 public class AntiFloodingActorMessageDispatcher extends ActorMessageDispatcher {

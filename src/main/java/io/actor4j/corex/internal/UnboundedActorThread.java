@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.actor4j.corex;
+package io.actor4j.corex.internal;
 
 import java.util.ArrayDeque;
 import java.util.LinkedList;
@@ -21,8 +21,8 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 import org.jctools.queues.MpscLinkedQueue;
 
-import io.actor4j.core.ActorSystemImpl;
-import io.actor4j.core.DefaultActorThread;
+import io.actor4j.core.internal.ActorSystemImpl;
+import io.actor4j.core.internal.DefaultActorThread;
 
 public class UnboundedActorThread extends DefaultActorThread {
 	public UnboundedActorThread(ThreadGroup group, String name, ActorSystemImpl system) {
